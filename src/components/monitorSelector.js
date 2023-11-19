@@ -73,9 +73,9 @@ export default function MonitorSelector({ current, callback })  {
 
   return (
       <div>
-        <label
-            className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            htmlFor="daysDropdown">Select days:</label>
+        {/*<label*/}
+        {/*    className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"*/}
+        {/*    htmlFor="daysDropdown">Select days:</label>*/}
         <select
             className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             id="daysDropdown" value={selectedValue} onChange={handleChange}>
