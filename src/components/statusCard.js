@@ -132,7 +132,7 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
                              backgroundColor: getStatusColor(statusPercentage),
                              height: 'auto',
                              borderRadius: '4px',
-                             textAlign: center,
+                             textAlign: "center",
                          }}
                     >
                         {statusPercentage}%
