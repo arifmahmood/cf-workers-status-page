@@ -126,7 +126,7 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
         return (
             <div style={styles.card}>
                 <div style={styles.progressBar}>
-                    <div
+                    <div className="items-center"
                         style={{
                             width: `${statusPercentage}%`,
                             backgroundColor: getStatusColor(statusPercentage),
