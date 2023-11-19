@@ -97,11 +97,6 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                 {state.visible.map((monitor, key) => {
                     return (
                         <div className="flex flex-row justify-between items-center p-4">
-                            {/*<div className="flex flex-row items-center">*/}
-                            {/*    /!*<img className="h-8 w-auto" src={config.settings.logo}/>*!/*/}
-                            {/*    /!*<h1 className="ml-4 text-3xl">{config.settings.title}</h1>*!/*/}
-                            {/*    */}
-                            {/*</div>*/}
 
                             <MonitorCard
                                 key={key}
@@ -109,12 +104,7 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                                 data={kvMonitors[monitor.id]}
                                 dayFilter={days}
                             />
-                            {/*<div className="flex flex-row items-center">*/}
-                            {/*    /!*{typeof window !== 'undefined' && <ThemeSwitcher/>}*!/*/}
-                            {/*    /!*<MonitorSelector current={days} callback={updateDaysInConfig}/>*!/*/}
 
-                            {/*    */}
-                            {/*</div>*/}
                             <StatusCard monitorId={monitor.id} kvMonitor={kvMonitors[monitor.id]} dayFilter={days}/>
                         </div>
 
