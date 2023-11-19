@@ -45,10 +45,10 @@ async function updateDaysInConfig(dayToSet) {
     return;
   }
 
-  const kvMonitorsKey = 'monitors_data_v1_1';
-  const kvMonitors = await getKVMonitors();
-  kvMonitors.dayFilter = dayToSet;
-  await setKVMonitors(kvMonitors);
+  // const kvMonitorsKey = 'monitors_data_v1_1';
+  // const kvMonitors = await getKVMonitors();
+  // kvMonitors.dayFilter = dayToSet;
+  // await setKVMonitors(kvMonitors);
   await sleep(5000);
   location.reload();
 }
