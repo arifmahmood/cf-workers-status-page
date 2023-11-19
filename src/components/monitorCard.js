@@ -48,7 +48,7 @@ export default function MonitorCard({ key, monitor, data, dayFilter }) {
         <MonitorStatusLabel kvMonitor={data} />
       </div>
 
-      <MonitorHistogram monitorId={monitor.id} kvMonitor={data} noOfDays={dayFilter}/>
+      <MonitorHistogram monitorId={monitor.id} kvMonitor={data} dayFilter={dayFilter}/>
 
       <div className="flex flex-row justify-between items-center text-gray-400 text-sm">
         <div>{dayFilter} days ago</div>
