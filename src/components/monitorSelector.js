@@ -15,47 +15,77 @@ import { useState } from 'react'
 //     />
 //   </svg>
 // )
+//
+// export default function MonitorSelector({ active, callback }) {
+//   const [input, setInput] = useState('')
+//
+//   const handleInput = (event) => {
+//     // ignore focus trigger
+//     if (event.target.value === '/') {
+//       return
+//     }
+//     setInput(event.target.value)
+//     callback(event.target.value)
+//   }
+//
+//   // const handleKeyDown = (event) => {
+//   //   // blur input field on escape
+//   //   if (event.keyCode === 27) {
+//   //     event.target.blur()
+//   //   }
+//   // }
+//
+//   return (
+//     <div className="col-span-6 sm:col-span-3 relative">
+//       {/*<input*/}
+//       {/*  className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"*/}
+//       {/*  type="text"*/}
+//       {/*  value={input}*/}
+//       {/*  onInput={handleInput}*/}
+//       {/*  onKeyDown={handleKeyDown}*/}
+//       {/*  placeholder="Select 30,45"*/}
+//       {/*  tabIndex={0}*/}
+//       {/*  ref={(e) => e && active && e.focus()}*/}
+//       {/*/>*/}
+//
+//       <label htmlFor="daysDropdown">Select days:</label>
+//       <select id="daysDropdown" onSelect={handleInput}>
+//         <option value="30">30 days</option>
+//         <option value="90">90 days</option>
+//         <option value="180">180 days</option>
+//         <option value="365">365 days</option>
+//       </select>
+//
+//     </div>
+//
+//
+//   )
+// }
+//
 
-export default function MonitorSelector({ active, callback }) {
-  const [input, setInput] = useState('')
+export default function MonitorSelector({ current, callback })  {
+  const [selectedValue, setSelectedValue] = useState(current); // Default value is 30 days
 
-  const handleInput = (event) => {
-    // ignore focus trigger
-    if (event.target.value === '/') {
-      return
-    }
-    setInput(event.target.value)
-    callback(event.target.value)
-  }
-
-  // const handleKeyDown = (event) => {
-  //   // blur input field on escape
-  //   if (event.keyCode === 27) {
-  //     event.target.blur()
-  //   }
-  // }
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+    callback(event.target.value);
+  };
 
   return (
-    <div className="col-span-6 sm:col-span-3 relative">
-      {/*<input*/}
-      {/*  className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"*/}
-      {/*  type="text"*/}
-      {/*  value={input}*/}
-      {/*  onInput={handleInput}*/}
-      {/*  onKeyDown={handleKeyDown}*/}
-      {/*  placeholder="Select 30,45"*/}
-      {/*  tabIndex={0}*/}
-      {/*  ref={(e) => e && active && e.focus()}*/}
-      {/*/>*/}
-
-      <label htmlFor="daysDropdown">Select days:</label>
-      <select id="daysDropdown" onSelect={handleInput}>
-        <option value="30">30 days</option>
-        <option value="90">90 days</option>
-        <option value="180">180 days</option>
-        <option value="365">365 days</option>
-      </select>
-
-    </div>
-  )
+      <div>
+        <label
+            className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            htmlFor="daysDropdown">Select days:</label>
+        <select
+            className="block w-full py-2 px-3 border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            id="daysDropdown" value={selectedValue} onChange={handleChange}>
+          <option value="30">30 days</option>
+          <option value="90">90 days</option>
+          <option value="180">180 days</option>
+          <option value="365">365 days</option>
+        </select>
+      </div>
+  );
 }
+
+export default Dropdown;
