@@ -74,16 +74,16 @@ const styles = {
     card: {
         border: '1px solid #ccc',
         borderRadius: '8px',
-        padding: '20px',
-        marginBottom: '20px',
+        padding: '5px',
+        marginBottom: '5px',
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
     },
     progressBar: {
-        width: '100%',
-        height: '20px',
+        width: '40px',
+        height: '40px',
         backgroundColor: '#f0f0f0',
         borderRadius: '4px',
-        marginTop: '10px',
+        marginTop: '5px',
     },
 };
 
@@ -133,9 +133,11 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
                             height: '100%',
                             borderRadius: '4px',
                         }}
-                    ></div>
+                    >
+                        {statusPercentage}%
+                    </div>
                 </div>
-                <p>Percentage: {statusPercentage}%</p>
+                {/*<p>Percentage: </p>*/}
             </div>
         );
     }
