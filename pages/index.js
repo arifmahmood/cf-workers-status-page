@@ -10,6 +10,7 @@ import MonitorStatusHeader from '../src/components/monitorStatusHeader'
 import ThemeSwitcher from '../src/components/themeSwitcher'
 import {useState} from "react";
 import MonitorSelector from "../src/components/monitorSelector";
+import StatusCard from "../src/components/statusCard";
 
 const MonitorStore = new Store({
     monitors: config.monitors,
@@ -95,12 +96,17 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                 <MonitorStatusHeader kvMonitorsLastUpdate={kvMonitorsLastUpdate}/>
                 {state.visible.map((monitor, key) => {
                     return (
-                        <MonitorCard
-                            key={key}
-                            monitor={monitor}
-                            data={kvMonitors[monitor.id]}
-                            dayFilter={days}
-                        />
+
+                        <div className="flex flex-row justify-between items-center mb-2" >
+                            <MonitorCard
+                                key={key}
+                                monitor={monitor}
+                                data={kvMonitors[monitor.id]}
+                                dayFilter={days}
+                            />
+                            <StatusCard monitorId={monitor.id} kvMonitor={data} dayFilter={days} />
+                        </div>
+
                     )
                 })}
                 <div className="flex flex-row justify-between mt-4 text-sm">
