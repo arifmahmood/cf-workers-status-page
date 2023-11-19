@@ -60,12 +60,18 @@ export default function MonitorHistogram({ monitorId, kvMonitor, dayFilter }) {
   }
 
   return (
-    <div
-      key={`${monitorId}-histogram`}
-      className="flex flex-row items-center histogram"
-    >
-      {content}
-        <StatusCard monitorId={monitorId} kvMonitor={kvMonitor} dayFilter={dayFilter}/>
-    </div>
+      <div>
+          <div
+              key={`${monitorId}-histogram`}
+              className="flex flex-row items-center histogram">
+              {content}
+          </div>
+          <div className="flex flex-row items-center histogram">
+              <StatusCard monitorId={monitorId} kvMonitor={kvMonitor} dayFilter={dayFilter}/>
+          </div>
+
+      </div>
+
+
   )
 }

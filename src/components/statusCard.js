@@ -79,8 +79,8 @@ const styles = {
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
     },
     progressBar: {
-        width: '40px',
-        height: '40px',
+        width: 'auto',
+        height: 'auto',
         backgroundColor: '#f0f0f0',
         borderRadius: '4px',
         marginTop: '5px',
@@ -130,7 +130,7 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
                         style={{
                             width: `${statusPercentage}%`,
                             backgroundColor: getStatusColor(statusPercentage),
-                            height: '100%',
+                            height: 'auto',
                             borderRadius: '4px',
                         }}
                     >
