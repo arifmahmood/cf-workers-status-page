@@ -40,13 +40,13 @@ export async function getEdgeProps() {
 
 const updateDaysInConfig = async (dayToSet) => {
     // get KV data
-    if (dayToSet !== 30 || dayToSet !== 45 || dayToSet !== 90 || dayToSet !== 120) {
+    if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
         return;
     }
 
     const kvMonitorsKey = 'monitors_data_v1_1';
     const kvMonitors = await getKVMonitors();
-    kvMonitors.dayFilter = dayToSet;
+    kvMonitors.dayFilter = parseInt(dayToSet);
     await setKVMonitors(kvMonitors);
     await sleep(5000);
     location.reload();
@@ -95,7 +95,6 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                     </div>
                     <div className="flex flex-row items-center">
                         {typeof window !== 'undefined' && <ThemeSwitcher/>}
-                        <MonitorFilter active={slash} callback={updateDaysInConfig}/>
                         <MonitorFilter active={slash} callback={updateDaysInConfig}/>
                     </div>
                 </div>
