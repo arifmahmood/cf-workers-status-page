@@ -20,7 +20,7 @@ const infoIcon = (
 
 export default function MonitorCard({ key, monitor, data, dayFilter }) {
   return (
-    <div key={key} className="card ninety-two-percent">
+    <div key={key} className="card">
       <div className="flex flex-row justify-between items-center mb-2">
         <div className="flex flex-row items-center align-center">
           {monitor.description && (
