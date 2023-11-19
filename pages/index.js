@@ -3,11 +3,13 @@ import { useStore } from 'laco-react'
 import Head from 'flareact/head'
 
 import { getKVMonitors, useKeyPress } from '../src/functions/helpers'
+import { getKvMonitors, saveKVMonitors } from '../src/cli/gcMonitors'
 import config from '../config.yaml'
 import MonitorCard from '../src/components/monitorCard'
 import MonitorFilter from '../src/components/monitorFilter'
 import MonitorStatusHeader from '../src/components/monitorStatusHeader'
 import ThemeSwitcher from '../src/components/themeSwitcher'
+import time from 'time'
 
 const MonitorStore = new Store({
   monitors: config.monitors,
@@ -37,6 +39,26 @@ export async function getEdgeProps() {
     revalidate: 5,
   }
 }
+
+async function updateDaysInConfig(dayToSet) {
+  // get KV data
+  if (dayToSet !== 30 || dayToSet !== 45 || dayToSet !== 90 || dayToSet !== 120 ){
+    return;
+  }
+
+  const kvMonitorsKey = 'monitors_data_v1_1';
+  const kvMonitors = await getKvMonitors();
+  kvMonitors.dayFilter = dayToSet;
+  await saveKVMonitors(kvMonitorsKey, kvMonitors);
+  await sleep(5000);
+  location.reload();
+
+}
+
+function sleep(ms = 0) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 export default function Index({ config, kvMonitors, kvMonitorsLastUpdate, dayFilter }) {
   const state = useStore(MonitorStore)
@@ -76,7 +98,7 @@ export default function Index({ config, kvMonitors, kvMonitorsLastUpdate, dayFil
           </div>
           <div className="flex flex-row items-center">
             {typeof window !== 'undefined' && <ThemeSwitcher />}
-            <MonitorFilter active={slash} callback={filterByTerm} />
+            <MonitorFilter active={slash} callback={updateDaysInConfig} />
           </div>
         </div>
         <MonitorStatusHeader kvMonitorsLastUpdate={kvMonitorsLastUpdate} />
