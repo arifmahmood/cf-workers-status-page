@@ -124,20 +124,15 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
         let statusPercentage = (((totalAttempt - totalFailCount) / totalAttempt) *100).toFixed(2);
 
         return (
-            <div style={styles.card}>
-                <div style={styles.progressBar}>
-                    <div className="items-center"
-                        style={{
-                            width: `${statusPercentage}%`,
-                            backgroundColor: getStatusColor(statusPercentage),
-                            height: 'auto',
-                            borderRadius: '4px',
-                        }}
-                    >
-                        {statusPercentage}%
-                    </div>
-                </div>
-                {/*<p>Percentage: </p>*/}
+            <div className="card items-center"
+                 style={{
+                     width: `${statusPercentage}%`,
+                     backgroundColor: getStatusColor(statusPercentage),
+                     height: 'auto',
+                     borderRadius: '4px',
+                 }}
+            >
+                {statusPercentage}%
             </div>
         );
     }
