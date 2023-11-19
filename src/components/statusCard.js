@@ -79,11 +79,11 @@ const styles = {
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)',
     },
     progressBar: {
-        width: 'auto',
+        width: '100px',
         height: 'auto',
         backgroundColor: '#f0f0f0',
         borderRadius: '4px',
-        marginTop: '5px',
+        marginTop: '2px',
     },
 };
 
