@@ -43,13 +43,15 @@ const updateDaysInConfig = async (dayToSet) => {
     if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
         return;
     }
-
-    const kvMonitorsKey = 'monitors_data_v1_1';
-    const kvMonitors = await getKVMonitors();
-    kvMonitors.dayFilter = parseInt(dayToSet);
-    await setKVMonitors(kvMonitors);
-    await sleep(5000);
-    location.reload();
+    console.log("Reached Here")
+    getKVMonitors().then((kvMonitors)=>{
+        kvMonitors.dayFilter = parseInt(dayToSet);
+        setKVMonitors(kvMonitors).then((val1)=>{
+            sleep(5000).then((val2)=>{
+                location.reload();
+            });
+        })
+    });
 }
 
 function sleep(ms = 0) {
