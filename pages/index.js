@@ -31,13 +31,14 @@ export async function getEdgeProps() {
       config,
       kvMonitors: kvMonitors ? kvMonitors.monitors : {},
       kvMonitorsLastUpdate: kvMonitors ? kvMonitors.lastUpdate : {},
+      dayFilter: kvMonitors ? kvMonitors.dayFilter : config.settings.daysInHistogram,
     },
     // Revalidate these props once every x seconds
     revalidate: 5,
   }
 }
 
-export default function Index({ config, kvMonitors, kvMonitorsLastUpdate }) {
+export default function Index({ config, kvMonitors, kvMonitorsLastUpdate, dayFilter }) {
   const state = useStore(MonitorStore)
   const slash = useKeyPress('/')
 
@@ -85,6 +86,7 @@ export default function Index({ config, kvMonitors, kvMonitorsLastUpdate }) {
               key={key}
               monitor={monitor}
               data={kvMonitors[monitor.id]}
+              dayFilter={dayFilter}
             />
           )
         })}

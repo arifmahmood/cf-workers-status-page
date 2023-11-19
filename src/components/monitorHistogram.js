@@ -2,15 +2,15 @@ import React from 'react'
 import config from '../../config.yaml'
 import MonitorDayAverage from './monitorDayAverage'
 
-export default function MonitorHistogram({ monitorId, kvMonitor }) {
+export default function MonitorHistogram({ monitorId, kvMonitor, dayFilter }) {
   // create date and set date - daysInHistogram for the first day of the histogram
   let date = new Date()
-  date.setDate(date.getDate() - config.settings.daysInHistogram)
+  date.setDate(date.getDate() - dayFilter)
 
   let content = null
 
   if (typeof window !== 'undefined') {
-    content = Array.from(Array(config.settings.daysInHistogram).keys()).map(
+    content = Array.from(Array(dayFilter).keys()).map(
       (key) => {
         date.setDate(date.getDate() + 1)
         const dayInHistogram = date.toISOString().split('T')[0]
