@@ -15,7 +15,7 @@ if (!accountId || !namespaceId || !apiToken) {
   process.exit(0)
 }
 
-export async function getKvMonitors(kvMonitorsKey) {
+async function getKvMonitors(kvMonitorsKey) {
   const init = {
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export async function getKvMonitors(kvMonitorsKey) {
   return json
 }
 
-export async function saveKVMonitors(kvMonitorsKey, data) {
+async function saveKVMonitors(kvMonitorsKey, data) {
   const init = {
     method: 'PUT',
     headers: {

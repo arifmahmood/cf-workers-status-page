@@ -2,8 +2,7 @@ import { Store } from 'laco'
 import { useStore } from 'laco-react'
 import Head from 'flareact/head'
 
-import { getKVMonitors, useKeyPress } from '../src/functions/helpers'
-import { getKvMonitors, saveKVMonitors } from '../src/cli/gcMonitors'
+import { getKVMonitors, setKVMonitors,  useKeyPress } from '../src/functions/helpers'
 import config from '../config.yaml'
 import MonitorCard from '../src/components/monitorCard'
 import MonitorFilter from '../src/components/monitorFilter'
@@ -47,12 +46,11 @@ async function updateDaysInConfig(dayToSet) {
   }
 
   const kvMonitorsKey = 'monitors_data_v1_1';
-  const kvMonitors = await getKvMonitors();
+  const kvMonitors = await getKVMonitors();
   kvMonitors.dayFilter = dayToSet;
-  await saveKVMonitors(kvMonitorsKey, kvMonitors);
+  await setKVMonitors(kvMonitors);
   await sleep(5000);
   location.reload();
-
 }
 
 function sleep(ms = 0) {
