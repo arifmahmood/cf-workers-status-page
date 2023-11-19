@@ -96,7 +96,7 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                 <MonitorStatusHeader kvMonitorsLastUpdate={kvMonitorsLastUpdate}/>
                 {state.visible.map((monitor, key) => {
                     return (
-                        <div className="flex flex-row justify-between items-center p-4">
+                        <div className="flex flex-row justify-between items-center">
 
                             <MonitorCard
                                 key={key}
