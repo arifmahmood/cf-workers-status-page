@@ -106,7 +106,7 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                                     dayFilter={days}
                                 />
                             </div>
-                            <div class="second-div">
+                            <div className="second-div">
                                 <StatusCard monitorId={monitor.id} kvMonitor={kvMonitors[monitor.id]} dayFilter={days} />
                             </div>
                         </div>
