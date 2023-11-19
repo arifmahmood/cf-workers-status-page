@@ -8,6 +8,7 @@ import MonitorCard from '../src/components/monitorCard'
 import MonitorFilter from '../src/components/monitorFilter'
 import MonitorStatusHeader from '../src/components/monitorStatusHeader'
 import ThemeSwitcher from '../src/components/themeSwitcher'
+import {useState} from "react";
 
 const MonitorStore = new Store({
     monitors: config.monitors,
@@ -38,20 +39,24 @@ export async function getEdgeProps() {
     }
 }
 
+const [days, setDays] = useState(90)
 const updateDaysInConfig = async (dayToSet) => {
     // get KV data
-    if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
-        return;
-    }
-    console.log("Reached Here")
-    getKVMonitors().then((kvMonitors)=>{
-        kvMonitors.dayFilter = parseInt(dayToSet);
-        setKVMonitors(kvMonitors).then((val1)=>{
-            sleep(5000).then((val2)=>{
-                location.reload();
-            });
-        })
-    });
+
+    setDays(parseInt(dayToSet))
+    // if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
+    //     return;
+    // }
+    // console.log("Reached Here")
+    // getKVMonitors().then((kvMonitors)=>{
+    //     kvMonitors.dayFilter = parseInt(dayToSet);
+    //     setKVMonitors(kvMonitors).then((val1)=>{
+    //         sleep(5000).then((val2)=>{
+    //             location.reload();
+    //         });
+    //     })
+    // });
+
 }
 
 function sleep(ms = 0) {
@@ -107,7 +112,7 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                             key={key}
                             monitor={monitor}
                             data={kvMonitors[monitor.id]}
-                            dayFilter={dayFilter}
+                            dayFilter={days}
                         />
                     )
                 })}
