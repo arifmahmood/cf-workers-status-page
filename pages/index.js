@@ -97,6 +97,7 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                     <div className="flex flex-row items-center">
                         {typeof window !== 'undefined' && <ThemeSwitcher/>}
                         <MonitorFilter active={slash} callback={updateDaysInConfig}/>
+                        <MonitorFilter active={slash} callback={updateDaysInConfig}/>
                     </div>
                 </div>
                 <MonitorStatusHeader kvMonitorsLastUpdate={kvMonitorsLastUpdate}/>
