@@ -1,6 +1,7 @@
 import config from '../../config.yaml'
 import MonitorStatusLabel from './monitorStatusLabel'
 import MonitorHistogram from './monitorHistogram'
+import StatusCard from "./statusCard";
 
 const infoIcon = (
   <svg
@@ -49,6 +50,7 @@ export default function MonitorCard({ key, monitor, data, dayFilter }) {
       </div>
 
       <MonitorHistogram monitorId={monitor.id} kvMonitor={data} dayFilter={dayFilter}/>
+      <StatusCard monitorId={monitor.id} kvMonitor={data} dayFilter={dayFilter} />
 
       <div className="flex flex-row justify-between items-center text-gray-400 text-sm">
         <div>{dayFilter} days ago</div>
