@@ -97,16 +97,21 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                 {state.visible.map((monitor, key) => {
                     return (
 
-                        <div className="flex flex-row justify-between items-center mb-2">
-                            <MonitorCard
-                                key={key}
-                                monitor={monitor}
-                                data={kvMonitors[monitor.id]}
-                                dayFilter={days}
-                            />
-                            <StatusCard monitorId={monitor.id} kvMonitor={kvMonitors[monitor.id]} dayFilter={days}/>
-
+                        <div className="container">
+                            <div className="dynamic-div">
+                                <MonitorCard
+                                    key={key}
+                                    monitor={monitor}
+                                    data={kvMonitors[monitor.id]}
+                                    dayFilter={days}
+                                />
+                            </div>
+                            <div className="fixed-div">
+                                <StatusCard monitorId={monitor.id} kvMonitor={kvMonitors[monitor.id]} dayFilter={days}/>
+                            </div>
                         </div>
+
+
 
                         // <div className="flex flex-row justify-between items-center mb-2" >
                         //
