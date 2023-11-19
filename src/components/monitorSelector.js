@@ -87,5 +87,3 @@ export default function MonitorSelector({ current, callback })  {
       </div>
   );
 }
-
-export default Dropdown;
