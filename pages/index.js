@@ -39,25 +39,24 @@ export async function getEdgeProps() {
     }
 }
 
-const [days, setDays] = useState(90)
-const updateDaysInConfig = async (dayToSet) => {
-    // get KV data
-
-    setDays(parseInt(dayToSet))
-    // if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
-    //     return;
-    // }
-    // console.log("Reached Here")
-    // getKVMonitors().then((kvMonitors)=>{
-    //     kvMonitors.dayFilter = parseInt(dayToSet);
-    //     setKVMonitors(kvMonitors).then((val1)=>{
-    //         sleep(5000).then((val2)=>{
-    //             location.reload();
-    //         });
-    //     })
-    // });
-
-}
+// const updateDaysInConfig = async (dayToSet) => {
+//     // get KV data
+//
+//     // setDays(parseInt(dayToSet))
+//     // if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
+//     //     return;
+//     // }
+//     // console.log("Reached Here")
+//     // getKVMonitors().then((kvMonitors)=>{
+//     //     kvMonitors.dayFilter = parseInt(dayToSet);
+//     //     setKVMonitors(kvMonitors).then((val1)=>{
+//     //         sleep(5000).then((val2)=>{
+//     //             location.reload();
+//     //         });
+//     //     })
+//     // });
+//
+// }
 
 function sleep(ms = 0) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -67,6 +66,15 @@ function sleep(ms = 0) {
 export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilter}) {
     const state = useStore(MonitorStore)
     const slash = useKeyPress('/')
+
+    const [days, setDays] = useState(90)
+    const updateDaysInConfig = async (dayToSet) => {
+        // get KV data
+
+        setDays(parseInt(dayToSet))
+
+
+    }
 
     return (
         <div className="min-h-screen">
