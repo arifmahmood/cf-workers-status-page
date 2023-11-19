@@ -81,7 +81,7 @@ const styles = {
     progressBar: {
         width: '100%',
         height: 'auto',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#c6d073',
         borderRadius: '4px',
         marginTop: '2px',
     },
@@ -121,18 +121,19 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
         if (totalAttempt === 0) {
             totalAttempt = 1;
         }
-        let statusPercentage = (((totalAttempt - totalFailCount) / totalAttempt) *100).toFixed(2);
+        let statusPercentage = (((totalAttempt - totalFailCount) / totalAttempt) * 100).toFixed(2);
 
         return (
             <div style={styles.card}>
                 <div style={styles.progressBar}>
                     <div className="items-center"
-                        style={{
-                            width: `${statusPercentage}%`,
-                            backgroundColor: getStatusColor(statusPercentage),
-                            height: 'auto',
-                            borderRadius: '4px',
-                        }}
+                         style={{
+                             width: `${statusPercentage}%`,
+                             backgroundColor: getStatusColor(statusPercentage),
+                             height: 'auto',
+                             borderRadius: '4px',
+                             textAlign: center,
+                         }}
                     >
                         {statusPercentage}%
                     </div>
@@ -140,8 +141,7 @@ export default function StatusCard({monitorId, kvMonitor, dayFilter}) {
                 {/*<p>Percentage: </p>*/}
             </div>
         );
-    }
-    else {
+    } else {
         return (
             <div>
             </div>
