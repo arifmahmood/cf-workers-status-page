@@ -9,6 +9,7 @@ import MonitorFilter from '../src/components/monitorFilter'
 import MonitorStatusHeader from '../src/components/monitorStatusHeader'
 import ThemeSwitcher from '../src/components/themeSwitcher'
 import {useState} from "react";
+import MonitorSelector from "../src/components/monitorSelector";
 
 const MonitorStore = new Store({
     monitors: config.monitors,
@@ -32,31 +33,12 @@ export async function getEdgeProps() {
             config,
             kvMonitors: kvMonitors ? kvMonitors.monitors : {},
             kvMonitorsLastUpdate: kvMonitors ? kvMonitors.lastUpdate : {},
-            dayFilter: kvMonitors ? kvMonitors.dayFilter : config.settings.daysInHistogram,
+            dayFilter: config.settings.daysInHistogram,
         },
         // Revalidate these props once every x seconds
         revalidate: 5,
     }
 }
-
-// const updateDaysInConfig = async (dayToSet) => {
-//     // get KV data
-//
-//     // setDays(parseInt(dayToSet))
-//     // if (dayToSet !== '30' || dayToSet !== '45' || dayToSet !== '90' || dayToSet !== '120') {
-//     //     return;
-//     // }
-//     // console.log("Reached Here")
-//     // getKVMonitors().then((kvMonitors)=>{
-//     //     kvMonitors.dayFilter = parseInt(dayToSet);
-//     //     setKVMonitors(kvMonitors).then((val1)=>{
-//     //         sleep(5000).then((val2)=>{
-//     //             location.reload();
-//     //         });
-//     //     })
-//     // });
-//
-// }
 
 function sleep(ms = 0) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -67,13 +49,10 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
     const state = useStore(MonitorStore)
     const slash = useKeyPress('/')
 
-    const [days, setDays] = useState(90)
+    const [days, setDays] = useState(dayFilter)
     const updateDaysInConfig = async (dayToSet) => {
         // get KV data
-
         setDays(parseInt(dayToSet))
-
-
     }
 
     return (
@@ -110,7 +89,7 @@ export default function Index({config, kvMonitors, kvMonitorsLastUpdate, dayFilt
                     </div>
                     <div className="flex flex-row items-center">
                         {typeof window !== 'undefined' && <ThemeSwitcher/>}
-                        <MonitorFilter active={slash} callback={updateDaysInConfig}/>
+                        <MonitorSelector callback={updateDaysInConfig}/>
                     </div>
                 </div>
                 <MonitorStatusHeader kvMonitorsLastUpdate={kvMonitorsLastUpdate}/>

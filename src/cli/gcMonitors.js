@@ -72,7 +72,7 @@ getKvMonitors(kvMonitorsKey)
 
       // delete dates older than config.settings.daysInHistogram
       let date = new Date()
-      date.setDate(date.getDate() - stateMonitors.dayFilter)
+      date.setDate(date.getDate() - config.settings.daysInHistogram)
       date.toISOString().split('T')[0]
       const cleanUpDate = date.toISOString().split('T')[0]
 

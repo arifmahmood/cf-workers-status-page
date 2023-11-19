@@ -23,7 +23,7 @@ export async function processCronTrigger(event) {
 
   // Create empty state objects if not exists in KV storage yet
   if (!monitorsState) {
-    monitorsState = { lastUpdate: {}, monitors: {} , dayFilter: config.settings.daysInHistogram}
+    monitorsState = { lastUpdate: {}, monitors: {} }
   }
 
   // Reset default all monitors state to true
