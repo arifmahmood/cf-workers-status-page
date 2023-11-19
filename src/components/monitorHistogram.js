@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '../../config.yaml'
 import MonitorDayAverage from './monitorDayAverage'
+import StatusCard from "./statusCard";
 
 export default function MonitorHistogram({ monitorId, kvMonitor, dayFilter }) {
   // create date and set date - daysInHistogram for the first day of the histogram
@@ -64,6 +65,7 @@ export default function MonitorHistogram({ monitorId, kvMonitor, dayFilter }) {
       className="flex flex-row items-center histogram"
     >
       {content}
+        <StatusCard monitorId={monitor.id} kvMonitor={data} dayFilter={dayFilter}/>
     </div>
   )
 }
