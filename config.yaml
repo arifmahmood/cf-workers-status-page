@@ -1,8 +1,8 @@
 settings:
-  title: 'EARL Status & Performance'
+  title: 'Status Page'
   url: 'https://status-page.eidam.dev' # used for Slack messages
   logo: logo-192x192.png # image in ./public/ folder
-  daysInHistogram: 365 # number of days you want to display in histogram
+  daysInHistogram: 90 # number of days you want to display in histogram
   collectResponseTimes: true # collects avg response times from CRON locations
 
   allmonitorsOperational: 'All Systems Operational'
@@ -15,18 +15,25 @@ settings:
   dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
 
 monitors:
-  - id: earl-apps # unique identifier
-    name: Applications
-    description: 'This refers to the web and mobile applications accessed by users.' # default=empty
-    url: 'https://apps.earl.health/ED/' # URL to fetch
+  - id: workers-cloudflare-com # unique identifier
+    name: workers.cloudflare.com
+    description: 'You write code. They handle the rest.' # default=empty
+    url: 'https://workers.cloudflare.com/' # URL to fetch
     method: GET # default=GET
     expectStatus: 200 # operational status, default=200
     followRedirect: false # should fetch follow redirects, default=false
     linkable: false # allows the title to be a link, default=true
-  - id: apis-earl
-    name: API's
-    description: 'This refers to the system services and application programmable interfaces (API's).'
-    url: 'https://apps.earl.health/API/rest/Public/'
+
+  - id: www-cloudflare-com
+    name: www.cloudflare.com
+    description: 'Built for anything connected to the Internet.'
+    url: 'https://www.cloudflare.com'
     method: GET
     expectStatus: 200
     linkable: true # allows the title to be a link, default=true
+
+  - id: blog-cloudflare-com
+    name: The Cloudflare Blog
+    url: 'https://blog.cloudflare.com/'
+    method: GET
+    expectStatus: 200
