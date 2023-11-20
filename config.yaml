@@ -23,7 +23,7 @@ monitors:
     expectStatus: 200 # operational status, default=200
     followRedirect: false # should fetch follow redirects, default=false
     linkable: false # allows the title to be a link, default=true
-  - id: earl-apis
+  - id: apis-earl
     name: API's
     description: 'This refers to the system services and application programmable interfaces (API's).'
     url: 'https://apps.earl.health/API/rest/Public/'
