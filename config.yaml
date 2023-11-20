@@ -15,7 +15,7 @@ settings:
   dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
 
 monitors:
-  - id: workers-cloudflare-com # unique identifier
+  - id: apps-earl-health # unique identifier
     name: workers.cloudflare.com
     description: 'You write code. They handle the rest.' # default=empty
     url: 'https://workers.cloudflare.com/' # URL to fetch
@@ -24,7 +24,7 @@ monitors:
     followRedirect: false # should fetch follow redirects, default=false
     linkable: false # allows the title to be a link, default=true
 
-  - id: www-cloudflare-com
+  - id: apps-earl-health-api
     name: www.cloudflare.com
     description: 'Built for anything connected to the Internet.'
     url: 'https://www.cloudflare.com'
