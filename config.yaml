@@ -15,7 +15,7 @@ settings:
   dayInHistogramNotOperational: ' incident(s)' # xx incident(s) recorded
 
 monitors:
-  - id: apps-earl-health # unique identifier
+  - id: earl-apps # unique identifier
     name: Applications
     description: 'This refers to the web and mobile applications accessed by users.' # default=empty
     url: 'https://apps.earl.health/ED/' # URL to fetch
@@ -24,9 +24,9 @@ monitors:
     followRedirect: false # should fetch follow redirects, default=false
     linkable: false # allows the title to be a link, default=true
 
-  - id: apps-earl-health-api
+  - id: earl-apis
     name: API's
-    description: 'This refers to the system services and application programmable interfaces (API's).'
+    description: 'This refers to the system services and application programmable interfaces (APIs).'
     url: 'https://apps.earl.health/API/rest/Public/'
     method: GET
     expectStatus: 200
